@@ -24,27 +24,32 @@ My networking lab runs on the following infrastructure:
 | Virtualization | KVM/QEMU |
 | Network emulator | EVE-NG 7.4 |
 | Router operating system | Cisco IOSv 15.9(3)M6 |
+| Switch operating system | Cisco IOSvL2 |
 | Network devices | Virtual Cisco routers, switches, and hosts |
-| Documentation | Markdown and Git |
-| Version control | GitHub |
+| Documentation | Markdown |
+| Version control | Git and GitHub |
 
 ## Projects
 
 | Lab | Topic | Description | Status |
 |---|---|---|---|
-| 01 | [Static Routing](01-static-routing/) | Establish communication between two separate office networks using static routes | Completed |
+| 01 | [Static Routing](01-Static-Routing/) | Connect two office networks using static routes and practice basic troubleshooting | Completed |
+| 02 | [VLANs, OSPF and Failover](02-VLANS-OSPF-FAILOVER/) | Configure VLANs, inter-VLAN routing, OSPF, and test automatic route failover | Completed |
 
 Additional networking labs will be added as I continue developing my skills.
 
 ## Skills Practiced
 
 - IPv4 addressing and subnetting
-- Static and dynamic routing
-- Network connectivity verification
+- Static and dynamic routing (OSPF)
+- VLAN configuration and 802.1Q trunking
+- Inter-VLAN routing using Router-on-a-Stick
+- OSPF neighbor verification and route analysis
+- Network redundancy and failover testing
+- Network connectivity verification and troubleshooting
 - Cisco IOS CLI
-- Network troubleshooting
-- Linux and virtualization
-- Technical documentation
+- Linux and virtualization (Fedora, KVM/QEMU, EVE-NG)
+- Technical documentation and Git version control
 
 ## About This Portfolio
 
