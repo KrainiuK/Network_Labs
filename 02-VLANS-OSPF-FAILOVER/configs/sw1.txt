@@ -1,0 +1,20 @@
+hostname SW1
+!
+interface GigabitEthernet0/0
+ switchport access vlan 10
+ switchport mode access
+ negotiation auto
+!
+interface GigabitEthernet0/1
+ switchport access vlan 20
+ switchport mode access
+ negotiation auto
+!
+interface GigabitEthernet0/2
+ switchport trunk allowed vlan 10,20
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 99
+ switchport mode trunk
+ negotiation auto
+!
+end
