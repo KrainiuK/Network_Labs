@@ -4,7 +4,7 @@ Welcome to my Network Engineering Lab Portfolio!
 
 I am a student who recently passed the **Cisco Certified Network Associate (CCNA)** exam and is currently developing practical networking skills to prepare for a career as a Network Engineer.
 
-This repository documents my hands-on networking projects, including network configuration, routing, switching, troubleshooting, and infrastructure fundamentals.
+This repository documents my hands-on networking projects, including network configuration, routing, switching, network security, troubleshooting, and infrastructure fundamentals.
 
 ## Objectives
 
@@ -35,6 +35,7 @@ My networking lab runs on the following infrastructure:
 |---|---|---|---|
 | 01 | [Static Routing](01-Static-Routing/) | Connect two office networks using static routes and practice basic troubleshooting | Completed |
 | 02 | [VLANs, OSPF and Failover](02-VLANS-OSPF-FAILOVER/) | Configure VLANs, inter-VLAN routing, OSPF, and test automatic route failover | Completed |
+| 03 | [Enterprise NAT, ACLs and Failover](03-Enterprise-NAT-ACL/) | Configure PAT, extended ACLs, simulated ISP connectivity, OSPF default routing, and failover testing | Completed |
 
 Additional networking labs will be added as I continue developing my skills.
 
@@ -45,6 +46,9 @@ Additional networking labs will be added as I continue developing my skills.
 - VLAN configuration and 802.1Q trunking
 - Inter-VLAN routing using Router-on-a-Stick
 - OSPF neighbor verification and route analysis
+- Default route advertisement through OSPF
+- NAT/PAT configuration and translation verification
+- Extended ACLs for traffic filtering between VLANs
 - Network redundancy and failover testing
 - Network connectivity verification and troubleshooting
 - Cisco IOS CLI
