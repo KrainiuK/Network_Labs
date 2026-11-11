@@ -1,0 +1,17 @@
+R2#show access-lists 101
+Extended IP access list 101
+    10 deny ip 192.168.40.0 0.0.0.255 192.168.10.0 0.0.0.255 (2 matches)
+    20 deny ip 192.168.40.0 0.0.0.255 192.168.30.0 0.0.0.255 (2 matches)
+    30 permit ip 192.168.40.0 0.0.0.255 any (70 matches)
+R2#show access-lists 1  
+Standard IP access list 1
+    10 permit 192.168.10.0, wildcard bits 0.0.0.255 (25 matches)
+    20 permit 192.168.20.0, wildcard bits 0.0.0.255 (10 matches)
+    30 permit 192.168.30.0, wildcard bits 0.0.0.255 (5 matches)
+    40 permit 192.168.40.0, wildcard bits 0.0.0.255 (10 matches)
+
+R1#show access-lists 101
+Extended IP access list 101
+    10 deny ip 192.168.20.0 0.0.0.255 192.168.10.0 0.0.0.255 (4 matches)
+    20 deny ip 192.168.20.0 0.0.0.255 192.168.30.0 0.0.0.255 (4 matches)
+    30 permit ip 192.168.20.0 0.0.0.255 any (20 matches)
