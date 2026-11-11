@@ -32,12 +32,12 @@ The scenario simulates two company offices connected through three routers. R1 c
 The topology consists of four Cisco routers (including the simulated ISP), two Layer 2 switches, and four virtual PCs.
 
 - **R1** connects Office A and provides the default gateways for its VLANs.
-- **R2** connects Office B, performs PAT, and connects the internal network to ISP1.
+- **R2** connects Office B, performs PAT, and connects the internal network to ISP.
 - **R3** provides an alternative route between R1 and R2.
-- **ISP1** simulates an external network using loopback address `203.0.113.10/32`.
+- **ISP** simulates an external network using loopback address `203.0.113.10/32`.
 - **SW1 and SW2** connect office devices in VLAN 10 (IT) and VLAN 20 (STAFF).
 
-R1, R2, and R3 form a triangle and run OSPF area 1. ISP1 is not part of OSPF. R2 advertises a default route into the internal OSPF network.
+R1, R2, and R3 form a triangle and run OSPF area 1. ISP is not part of OSPF. R2 advertises a default route into the internal OSPF network.
 
 The ISP connection is simulated in EVE-NG; it does not provide access to the public Internet.
 
@@ -53,9 +53,9 @@ The ISP connection is simulated in EVE-NG; it does not provide access to the pub
 | R2 | Gi0/2 | 10.0.14.2/30 | Connection to R3 |
 | R3 | Gi0/1 | 10.0.13.2/30 | Connection to R1 |
 | R3 | Gi0/2 | 10.0.14.1/30 | Connection to R2 |
-| R2 | Gi0/3 | 198.51.100.1/30 | NAT outside interface, connection to ISP1 |
-| ISP1 | Gi0/0 | 198.51.100.2/30 | Connection to R2 |
-| ISP1 | Loopback0 | 203.0.113.10/32 | Simulated external destination |
+| R2 | Gi0/3 | 198.51.100.1/30 | NAT outside interface, connection to ISP |
+| ISP | Gi0/0 | 198.51.100.2/30 | Connection to R2 |
+| ISP | Loopback0 | 203.0.113.10/32 | Simulated external destination |
 
 ### VLAN Networks
 
@@ -85,7 +85,7 @@ show access-lists 101
 
 ### Default Routing and OSPF Verification
 
-R2 uses a static default route toward ISP1 (`198.51.100.2`) and advertises the default route into OSPF using `default-information originate`.
+R2 uses a static default route toward ISP (`198.51.100.2`) and advertises the default route into OSPF using `default-information originate`.
 
 R1 learned an OSPF external default route (`O*E2`) through R2 with next hop `10.0.12.2` during normal operation.
 
@@ -162,7 +162,7 @@ The default route on R1 and a traceroute from PC1 to the ISP loopback were compa
 |---|---|---|
 | Default route next hop on R1 | 10.0.12.2 (R2) | 10.0.13.2 (R3) |
 | Outgoing interface on R1 | Gi0/0 | Gi0/1 |
-| Path to ISP1 | R1 → R2 → ISP1 | R1 → R3 → R2 → ISP1 |
+| Path to ISP | R1 → R2 → ISP | R1 → R3 → R2 → ISP |
 
 From PC1:
 
@@ -170,7 +170,7 @@ From PC1:
 trace 203.0.113.10
 ```
 
-Before the failure, traceroute passed through R2 directly. After the failure, it passed through R3 (`10.0.13.2`) and then R2 (`10.0.14.2`) before reaching ISP1.
+Before the failure, traceroute passed through R2 directly. After the failure, it passed through R3 (`10.0.13.2`) and then R2 (`10.0.14.2`) before reaching ISP.
 
 **Result:** OSPF recalculated the route after the direct link failed. The routing table and traceroute confirmed the alternative path toward the simulated ISP.
 
