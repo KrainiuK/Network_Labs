@@ -19,7 +19,7 @@ I also practiced source NAT, destination NAT (port forwarding), firewall logging
 
 ## Network Topology
 
-![Lab 04 network topology](04-Enterprise-Firewall-DMZ/screenshots/topology.png)
+![Lab 04 network topology](screenshots/topology.png)
 
 The OPNsense firewall has four interfaces. Each network has a separate subnet and uses OPNsense as its gateway. The **Management** cloud in EVE-NG connects the IT network to my Fedora host so I can access the OPNsense web interface.
 
@@ -40,7 +40,7 @@ The OPNsense firewall has four interfaces. Each network has a separate subnet an
 
 The ISP network uses reserved documentation addresses and **does not provide real internet access**.
 
-![OPNsense interface assignments](04-Enterprise-Firewall-DMZ/screenshots/InterfaceAssignments.png)
+![OPNsense interface assignments](screenshots/InterfaceAssignments.png)
 
 ## Firewall Security Policy
 
@@ -59,7 +59,7 @@ I used OPNsense's **default-deny behavior** on the newly assigned STAFF and DMZ 
 
 **Stateful filtering:** Once OPNsense permits a connection, matching return traffic can use the existing firewall state. A separate broad reverse-direction allow rule is not required.
 
-![Configured firewall rules](04-Enterprise-Firewall-DMZ/screenshots/FirewallRules.png)
+![Configured firewall rules](screenshots/FirewallRules.png)
 
 ## NAT Configuration
 
@@ -67,7 +67,7 @@ I used OPNsense's **default-deny behavior** on the newly assigned STAFF and DMZ 
 
 I kept **Automatic Source NAT rule generation** enabled. OPNsense uses outbound NAT for traffic leaving through WAN, allowing internal clients to communicate with the simulated external network using the firewall's WAN address.
 
-![Automatic Source NAT mode](04-Enterprise-Firewall-DMZ/screenshots/SrcNAT.png)
+![Automatic Source NAT mode](screenshots/SrcNAT.png)
 
 ### Destination NAT (Port Forwarding)
 
@@ -84,7 +84,7 @@ I configured a WAN port forward to publish the Apache web server in the DMZ:
 
 The NAT rule changes the destination address, while the WAN firewall rule permits the matching connection. The source restriction means this test rule is intended for the simulated ISP, not the public internet.
 
-![Destination NAT rule](04-Enterprise-Firewall-DMZ/screenshots/DestNAT.png)
+![Destination NAT rule](screenshots/DestNAT.png)
 
 ## Verification and Testing
 
@@ -108,11 +108,11 @@ I tested permitted and denied traffic and checked the results in **Firewall → 
 
 The firewall logs show ICMP attempts from the DMZ server to IT and STAFF being blocked by the default deny rule.
 
-![Blocked DMZ traffic](04-Enterprise-Firewall-DMZ/screenshots/DMZrestrictions.png)
+![Blocked DMZ traffic](screenshots/DMZrestrictions.png)
 
 They also show STAFF-to-IT traffic blocked while STAFF-to-ISP ICMP is allowed.
 
-![STAFF traffic verification](04-Enterprise-Firewall-DMZ/screenshots/STAFFrestrictions.png)
+![STAFF traffic verification](screenshots/STAFFrestrictions.png)
 
 ### Allowed HTTP Traffic
 
@@ -124,11 +124,11 @@ From the ISP router, I tested the WAN HTTP port:
 
 OPNsense recorded the permitted TCP connection from `198.51.100.2` to the translated destination `192.168.50.10:80`.
 
-![ISP to DMZ HTTP connection logs](04-Enterprise-Firewall-DMZ/screenshots/ISP-DMZconnection.png)
+![ISP to DMZ HTTP connection logs](screenshots/ISP-DMZconnection.png)
 
 From Fedora, I also opened Apache directly at `http://192.168.50.10`.
 
-![Apache website accessed from Fedora](04-Enterprise-Firewall-DMZ/screenshots/HTTPweb.png)
+![Apache website accessed from Fedora](screenshots/HTTPweb.png)
 
 ## Troubleshooting
 
