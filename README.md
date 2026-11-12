@@ -12,30 +12,34 @@ This repository documents my hands-on networking projects, including network con
 - Develop Cisco IOS configuration and troubleshooting skills.
 - Build and document realistic network scenarios.
 - Strengthen my understanding of Linux and network virtualization.
-- Prepare for Network Engineer positions.
+- Gain practical experience with network security and firewalls.
+- Prepare for Network Engineer and Junior Network Security Engineer positions.
 
 ## Lab Environment
 
 My networking lab runs on the following infrastructure:
 
 | Component | Technology |
-|---|---|
+| --- | --- |
 | Host operating system | Fedora Linux |
 | Virtualization | KVM/QEMU |
 | Network emulator | EVE-NG 7.4 |
 | Router operating system | Cisco IOSv 15.9(3)M6 |
 | Switch operating system | Cisco IOSvL2 |
-| Network devices | Virtual Cisco routers, switches, and hosts |
+| Firewall | OPNsense 26.7 |
+| Linux server | Debian Linux with Apache2 |
+| Network devices | Virtual routers, switches, firewalls, servers, and hosts |
 | Documentation | Markdown |
 | Version control | Git and GitHub |
 
 ## Projects
 
 | Lab | Topic | Description | Status |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | 01 | [Static Routing](01-Static-Routing/) | Connect two office networks using static routes and practice basic troubleshooting | Completed |
 | 02 | [VLANs, OSPF and Failover](02-VLANS-OSPF-FAILOVER/) | Configure VLANs, inter-VLAN routing, OSPF, and test automatic route failover | Completed |
 | 03 | [Enterprise NAT, ACLs and Failover](03-Enterprise-NAT-ACL/) | Configure PAT, extended ACLs, simulated ISP connectivity, OSPF default routing, and failover testing | Completed |
+| 04 | [Enterprise Firewall & DMZ](04-Enterprise-Firewall-DMZ/) | Deploy OPNsense, configure security zones and stateful firewall rules, implement NAT and DMZ port forwarding, and verify network isolation | Completed |
 
 Additional networking labs will be added as I continue developing my skills.
 
@@ -49,10 +53,16 @@ Additional networking labs will be added as I continue developing my skills.
 - Default route advertisement through OSPF
 - NAT/PAT configuration and translation verification
 - Extended ACLs for traffic filtering between VLANs
+- OPNsense firewall installation and configuration
+- Network segmentation using IT, STAFF, and DMZ security zones
+- Stateful firewall rules and default-deny policies
+- Source NAT and destination NAT (port forwarding)
+- Firewall logging, connection tracking, and security verification
+- Linux server configuration and Apache web hosting
 - Network redundancy and failover testing
 - Network connectivity verification and troubleshooting
 - Cisco IOS CLI
-- Linux and virtualization (Fedora, KVM/QEMU, EVE-NG)
+- Linux and virtualization (Fedora, Debian, KVM/QEMU, EVE-NG)
 - Technical documentation and Git version control
 
 ## About This Portfolio
