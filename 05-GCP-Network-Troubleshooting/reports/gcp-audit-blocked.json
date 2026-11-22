@@ -1,0 +1,134 @@
+{
+  "timestamp": "2026-11-22T19:38:29.325164+00:00",
+  "project": "project-dd965bb6-2cca-4dd7-93a",
+  "checks": [
+    {
+      "check": "Client-to-server peering ACTIVE",
+      "result": "PASS"
+    },
+    {
+      "check": "Server-to-client peering ACTIVE",
+      "result": "PASS"
+    },
+    {
+      "check": "Client VM network configuration",
+      "result": "PASS"
+    },
+    {
+      "check": "Server VM network configuration",
+      "result": "PASS"
+    },
+    {
+      "check": "Client IAP SSH rule",
+      "result": "PASS"
+    },
+    {
+      "check": "Server IAP SSH rule",
+      "result": "PASS"
+    },
+    {
+      "check": "Client-to-server HTTP rule",
+      "result": "FAIL"
+    }
+  ],
+  "inventory": {
+    "vpcs": [
+      {
+        "name": "lab05-client-vpc",
+        "peerings": [
+          {
+            "name": "client-to-server",
+            "state": "ACTIVE"
+          }
+        ]
+      },
+      {
+        "name": "lab05-server-vpc",
+        "peerings": [
+          {
+            "name": "server-to-client",
+            "state": "ACTIVE"
+          }
+        ]
+      }
+    ],
+    "instances": [
+      {
+        "name": "lab05-client-vm",
+        "status": "RUNNING",
+        "internal_ips": [
+          "10.10.10.10"
+        ],
+        "tags": [
+          "lab05-client"
+        ]
+      },
+      {
+        "name": "lab05-server-vm",
+        "status": "RUNNING",
+        "internal_ips": [
+          "10.20.20.10"
+        ],
+        "tags": [
+          "lab05-server"
+        ]
+      }
+    ],
+    "firewall_rules": [
+      {
+        "name": "client-iap-ssh",
+        "disabled": false,
+        "source_ranges": [
+          "35.235.240.0/20"
+        ],
+        "target_tags": [
+          "lab05-client"
+        ],
+        "allowed": [
+          {
+            "IPProtocol": "tcp",
+            "ports": [
+              "22"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "lab05-allow-http",
+        "disabled": true,
+        "source_ranges": [
+          "10.10.10.0/24"
+        ],
+        "target_tags": [
+          "lab05-server"
+        ],
+        "allowed": [
+          {
+            "IPProtocol": "tcp",
+            "ports": [
+              "8080"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "server-iap-ssh",
+        "disabled": false,
+        "source_ranges": [
+          "35.235.240.0/20"
+        ],
+        "target_tags": [
+          "lab05-server"
+        ],
+        "allowed": [
+          {
+            "IPProtocol": "tcp",
+            "ports": [
+              "22"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
